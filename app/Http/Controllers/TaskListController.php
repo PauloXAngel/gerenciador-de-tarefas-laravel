@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class TaskListController extends Controller
 {
-    /**
-     * Exibe as listas do usuário autenticado
-     */
     public function index()
     {
         $lists = auth()->user()->taskLists;
@@ -17,9 +14,6 @@ class TaskListController extends Controller
         return view('task-lists.index', compact('lists'));
     }
 
-    /**
-     * Cria uma nova lista
-     */
     public function store(Request $request)
     {
         $request->validate([
