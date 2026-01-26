@@ -3,13 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Task;
+use App\Models\User;
 
 class TaskList extends Model
 {
     protected $fillable = [
-        'name',
+        'title',
         'user_id',
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 
     public function user()
     {

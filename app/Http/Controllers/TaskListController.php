@@ -9,7 +9,7 @@ class TaskListController extends Controller
 {
     public function index()
     {
-        $lists = auth()->user()->taskLists;
+        $lists = auth()->user()->taskLists()->with('tasks')->get();
 
         return view('task-lists.index', compact('lists'));
     }

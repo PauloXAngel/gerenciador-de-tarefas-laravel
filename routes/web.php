@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskListController;
 use App\Http\Controllers\ProfileController;
@@ -23,6 +23,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/task-lists', [TaskListController::class, 'store'])
         ->name('task-lists.store');
+    Route::post(
+        '/task-lists/{taskList}/tasks',
+        [TaskController::class, 'store']
+        )->name('tasks.store');
+
 });
 
 require __DIR__ . '/auth.php';
